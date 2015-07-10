@@ -19,8 +19,10 @@ Bottom = {Ctrl+End};
 Find Symbol = {Ctrl+r};
 
 (Set | Add | Clear | Hide | Delete) Bookmark = {Ctrl+Alt+F2};
-
 (Next = 'F2' | Last = 'Shift+F2') Bookmark = {$1};
+
+Next Window = {Ctrl+Tab};
+Last Window = {Ctrl+Shift+Tab};
 
 
 # --- Editing commands ----------------------------------------
