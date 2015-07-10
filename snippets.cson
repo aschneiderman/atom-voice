@@ -1,0 +1,36 @@
+# Your snippets
+#
+# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
+# expand the prefix into a larger code block with templated values.
+#
+# You can create a new snippet in this file by typing "snip" and then hitting
+# tab.
+#
+# An example CoffeeScript snippet to expand log to console.log:
+#
+# '.source.coffee':
+#   'Console log':
+#     'prefix': 'log'
+#     'body': 'console.log $1'
+
+# This file uses CoffeeScript Object Notation (CSON).
+# If you are unfamiliar with CSON, you can read more about it here:
+# https://github.com/bevry/cson#what-is-cson
+
+'*':
+  'Snippet Name':
+    'prefix': 'hello'
+    'body': 'I work everywhere!'
+
+'.text.html':
+  'Pure Form':
+    'prefix': 'pure-form'
+    'body': """<form class="pure-form">'
+    $1
+    </form>"""
+
+    #NOTE:  next html snippet has to go here -- do NOT create another .text.html
+
+
+# NOTE: If I want to create python snippets, use .source.python
+#       But first, check to make sure the python snippets don't come pre-installed
