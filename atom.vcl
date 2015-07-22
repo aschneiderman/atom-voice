@@ -11,10 +11,15 @@ Save and Reload =  {Ctrl+s}  Wait(100) {Alt+Tab} Wait(300);
 
 
 # --- Navigation commands ------------------------------------
+<delimiters> := (Quote = '"' | 'Single Quote' = "'" | Comma = ',' | 'Equal Sign' = '=' | Equals = '=');
 Line 1..200 = {Ctrl+g} $1 {Enter};
 (Left = 'b' | Right = 'f') Word = {Alt+$1};
 Top = {Ctrl+Home};
 Bottom = {Ctrl+End};
+(Find = 'Right' | 'Insert After' = 'Right' | 'Insert Before' = 'Left') (Next = 'Enter' | Last = 'Shift+F3') <delimiters> 
+		= {Ctrl+f} $3 {$2} {Esc}   Wait(100) {$1};
+Insert (Before = 'Left' | After = 'Right') <delimiters> =  {Ctrl+f} $2 {Enter} {Esc}   Wait(100) {$1};
+Find Again = {F3} {Right};
 
 Find Symbol = {Ctrl+r};
 
@@ -29,7 +34,10 @@ Last Window = {Ctrl+Shift+Tab};
 Select (Next = 'Down' | Last = 'Up') 1..20 Lines = {Home} {Shift+$1_$2};
 Join That = {Ctrl+j};
 Move Line (Up | Down) 1..20  = {Ctrl+$1_$2};
-Dede = {Ctrl+Shift+k};
+
+Delete Word = {Ctrl+Del};
+Delete 1..20 Words = {Ctrl+Del_$1};
+(Delete Line | Dede) = {Ctrl+Shift+k};
 Delete 1..20 Lines = {Ctrl+Shift+k_$1};
 
 # TO ADD:
