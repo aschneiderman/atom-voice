@@ -1,25 +1,30 @@
 # Voice commands for atom
 
+include folders.vch;
+include letters.vch;
 
 Find (File | Document) = {Ctrl+t};
 Save As = {Ctrl+Shift+s};
 Save and Reload =  {Ctrl+s}  Wait(100) {Alt+Tab} Wait(300);
 
-
-
-
-
+<delimiters> := (Quote = '"' | 'Single Quote' = "'" | Comma = ',' | 'Equal Sign' = '=' | Equals = '=');
 
 # --- Navigation commands ------------------------------------
-<delimiters> := (Quote = '"' | 'Single Quote' = "'" | Comma = ',' | 'Equal Sign' = '=' | Equals = '=');
 Line 1..200 = {Ctrl+g} $1 {Enter};
 (Left = 'b' | Right = 'f') Word = {Alt+$1};
 Top = {Ctrl+Home};
 Bottom = {Ctrl+End};
+
+
 (Find = 'Right' | 'Insert After' = 'Right' | 'Insert Before' = 'Left') (Next = 'Enter' | Last = 'Shift+F3') <delimiters> 
 		= {Ctrl+f} $3 {$2} {Esc}   Wait(100) {$1};
 Insert (Before = 'Left' | After = 'Right') <delimiters> =  {Ctrl+f} $2 {Enter} {Esc}   Wait(100) {$1};
+
+Fine Alpha <letters> = {Ctrl+f} $1 {Enter} {Esc}   Wait(100) {Right};
+Insert (Before = 'Left' | After = 'Right') Alpha <letters> =  {Ctrl+f} $2 {Enter} {Esc}   Wait(100) {$1};
+
 Find Again = {F3} {Right};
+Find Again 1..20 Times = {F3_$1} {Right};
 
 Find Symbol = {Ctrl+r};
 
