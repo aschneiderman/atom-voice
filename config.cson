@@ -1,6 +1,6 @@
 "*":
   "exception-reporting":
-    userId: "fcb4e9b9-4903-7197-2cf8-41d033bf882d"
+    userId: "cdec2291-b8f5-80c8-38d2-f9aad2ad1905"
   welcome:
     showOnStartup: false
   core:
@@ -8,5 +8,10 @@
       "one-light-ui"
       "one-light-syntax"
     ]
+    audioBeep: false
+
   editor:
     invisibles: {}
+    tabLength: 2
+    fontSize: 13
+    softWrap: true
