@@ -1,6 +1,4 @@
 "*":
-  "exception-reporting":
-    userId: "cdec2291-b8f5-80c8-38d2-f9aad2ad1905"
   welcome:
     showOnStartup: false
   core:
@@ -9,9 +7,11 @@
       "one-light-syntax"
     ]
     audioBeep: false
-
   editor:
     invisibles: {}
     tabLength: 2
     fontSize: 13
     softWrap: true
+    softTabs: false
+  "exception-reporting":
+    userId: "641e57f7-71ad-3e89-7424-d0acd1db4782"
