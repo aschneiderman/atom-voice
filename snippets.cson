@@ -13,8 +13,12 @@
       'test':
         'prefix': 'test'
         'body':  'Hi there, this is a test'
+      'D3 Sandwich Text Input':
+        'prefix': 'ds-input-text'
+        'body': """<input type="text" value="$1"  onChange="$2(''$3', this)">$0
+        """
       'Recipe Row':
-        'prefix': 'maa'
+        'prefix': 'recipe-row'
         'body': """
         <div class="recipe_row">
         <div class="recipe_text">
@@ -25,7 +29,30 @@
           $2
           </pre>
         </div>
-        </div>  <!-- recipe_row -->
+        </div>  <!-- end recipe_row -->
+        $0
+        """
+      'Bold ID':
+        'prefix':'bold-id'
+        'body': '<b id="$1">'
+      'Recipe Play Area':
+        'prefix': 'recipe-play'
+        'body': """
+        <div class="recipe_row">
+        <div class="recipe_text">
+          <svg width="500" height="160" id="$1" class="SVG_playground"></svg>        <!-- SVG graphics will go here  -->
+        </div>
+        <div class="recipe_code">
+          <form>
+            <table class="input_table">
+              <tr><td>$2
+            </table>
+          </form>
+        </div>
+        </div>  <!-- end recipe_row -->
+        <script type="text/javascript">
+
+        </script>
         $0
         """
 
