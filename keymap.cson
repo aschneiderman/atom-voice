@@ -5,6 +5,8 @@
 	'alt-ctrl-f3': 'markdown:paste-as-link-anders'
 	'alt-ctrl-f4': 'custom:say-hi'
 
+# NOTE: looks like the shift-control keystrokes are not tied to anything right Now
+# NOTE: looks like shift alt control Is open for business
 
 
 
