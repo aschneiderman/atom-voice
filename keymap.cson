@@ -1,9 +1,13 @@
 # My keymap
-# * To create a new keybinding: type "key" and hit tab
+
+'body':
+	'shift-alt-ctrl-f5': 'window:reload'  # Remapping it from default shortcut key (already taken by another program)
 
 'atom-text-editor':
-	'alt-ctrl-f3': 'markdown:paste-as-link-anders'
-	'alt-ctrl-f4': 'custom:say-hi'
+	'alt-ctrl-f3': 'markdown:paste-as-link-anders'	# A little test – can get rid of it later
+	'alt-ctrl-f4': 'custom:delete-tag'
+
+
 
 # NOTE: looks like the shift-control keystrokes are not tied to anything right Now
 # NOTE: looks like shift alt control Is open for business
