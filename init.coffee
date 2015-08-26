@@ -1,35 +1,31 @@
 # My init script
 
-# NOTES:
-#  * Before command has been tied to a keymap, Use control-shift-p to get to it
+# -----------------------------------------------------------------------------
+# Helper functions
 
-# tell_user: my equivalent of a simple dialog box
+# tellUser: my equivalent of a simple dialog box
 tellUser = (user_message) ->
   atom.confirm
     message: user_message
     buttons:
       OK:  =>
 
+
+# -----------------------------------------------------------------------------
+# My commands
+
 atom.commands.add 'atom-text-editor', 'voice:delete-tag', ->
-  # delete-tag: Deletes the outer tags -- e.g., <p>...</p>
+# delete-tag: Deletes the outer tags -- e.g., <p>...</p>
   return unless editor = atom.workspace.getActiveTextEditor()
-  editor.selectLinesContainingCursors()    # NOTE: If I get weird behavior, may need to clear other cursors before running the   Next line
+  myCursor = editor.getCursorBufferPosition()
+  editor.selectLinesContainingCursors()    # NOTE: Will do weird things if you have multiple cursors active
   line =  editor.getLastSelection().getText()
   line = line.replace(/<([^>]+)>(.*)<\/\1>\s*\n$/, "$2\n" )
   editor.insertText("#{line}")
+  editor.setCursorBufferPosition(myCursor)
 
 
 
-
-# ---------------------------------------------------------------------------------------
-  # SOME USEFUL TRICKS:
-  # blueberry = editor.getCursorBufferPosition()    # This line works!
-  # editor.insertText("here are some great strawberries: #{blueberry}")
-
-
-
-# Up next: add snippets to make commands easier to create (and document in this and key map file)
-#          Figure out how to create a cut to bookmark command
 
 
 # ---------------------------------------------------------------------------------------
