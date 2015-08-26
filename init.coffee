@@ -10,29 +10,18 @@ tellUser = (user_message) ->
     buttons:
       OK:  =>
 
-atom.commands.add 'atom-text-editor', 'custom:delete-tag', ->
+atom.commands.add 'atom-text-editor', 'voice:delete-tag', ->
+  # delete-tag: Deletes the outer tags -- e.g., <p>...</p>
   return unless editor = atom.workspace.getActiveTextEditor()
-  # NOTE: If I start seeing weird behavior, may need to clear other cursors before running the   Next line
-  editor.selectLinesContainingCursors()
+  editor.selectLinesContainingCursors()    # NOTE: If I get weird behavior, may need to clear other cursors before running the   Next line
   line =  editor.getLastSelection().getText()
-
-  line = line.replace(/<([^>])+>/, '')
-  # line = line.replace(/^<([a-z]+)([^<]+)*(?:>(.*)<\/\1>|\s+\/>)$/, "$2")
-  # line = line.replace(/<\/p>/, ' Puppy')
-  # line = line.replace(/a$/, ' Puppy')
-  # line = line.replace(/<\/p>\n$/, ' Puppy')
-  # tellUser strawberry
-
-  editor.insertText("#{line}")   # NOTE: calling insertText is the right way to go: that's how their example does it
-  # What I need to do is grab the cursor position before I do the Insert,
-  # and then restore it afterwards -- I think that'll do the trick
-
- # <p>  this is some text </p>
- # This is the next Line
+  line = line.replace(/<([^>]+)>(.*)<\/\1>\s*\n$/, "$2\n" )
+  editor.insertText("#{line}")
 
 
 
 
+# ---------------------------------------------------------------------------------------
   # SOME USEFUL TRICKS:
   # blueberry = editor.getCursorBufferPosition()    # This line works!
   # editor.insertText("here are some great strawberries: #{blueberry}")

@@ -5,7 +5,7 @@
 
 'atom-text-editor':
 	'alt-ctrl-f3': 'markdown:paste-as-link-anders'	# A little test – can get rid of it later
-	'alt-ctrl-f4': 'custom:delete-tag'
+	'alt-ctrl-f4': 'voice:delete-tag'
 
 
 
