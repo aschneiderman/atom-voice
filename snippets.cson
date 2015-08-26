@@ -9,6 +9,27 @@
     'prefix': 'hello'
     'body': 'I work everywhere!'
 
+
+'.source.coffee':
+  'Fix Current Line':
+      'prefix': 'fix-current-line'
+      'body': """
+      atom.commands.add 'atom-text-editor', 'voice:$1', ->
+      # $1: $2
+        fixCurrentLine ( (line) ->
+          line.$0
+        )
+      """
+  'My Snippet':
+    'prefix': 'my-snippet'
+    'body':  """
+    '$1':
+      'prefix': '$2'
+      'body': "$0"
+
+    """
+    
+
 '.text.html':
       'test':
         'prefix': 'test'

@@ -10,21 +10,26 @@ tellUser = (user_message) ->
     buttons:
       OK:  =>
 
+fixCurrentLine = (fixingFunction)  ->
+  # fixCurrentLine: runs fixingFunction on the current line and replaces the current line with the result
+  return unless editor = atom.workspace.getActiveTextEditor()
+  myCursor = editor.getCursorBufferPosition()
+  editor.selectLinesContainingCursors()    # NOTE: Will do weird things if you have multiple cursors active
+  line =  editor.getLastSelection().getText()
+  editor.insertText("#{fixingFunction(line)}")
+  editor.setCursorBufferPosition(myCursor)
+
 
 # -----------------------------------------------------------------------------
 # My commands
 
 atom.commands.add 'atom-text-editor', 'voice:delete-tag', ->
-# delete-tag: Deletes the outer tags -- e.g., <p>...</p>
-  return unless editor = atom.workspace.getActiveTextEditor()
-  myCursor = editor.getCursorBufferPosition()
-  editor.selectLinesContainingCursors()    # NOTE: Will do weird things if you have multiple cursors active
-  line =  editor.getLastSelection().getText()
-  line = line.replace(/<([^>]+)>(.*)<\/\1>\s*\n$/, "$2\n" )
-  editor.insertText("#{line}")
-  editor.setCursorBufferPosition(myCursor)
+# delete-tag: Deletes the outer tags -- e.g., <p>...</p> -- the current line
+  fixCurrentLine ( (line) ->
+    line.replace(/<([^>]+)>(.*)<\/\1>\s*\n$/, "$2\n" )
+  )
 
-
+#      <p> To test delete-tag, run it on this line</p>
 
 
 
