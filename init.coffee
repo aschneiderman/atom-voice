@@ -32,6 +32,15 @@ atom.commands.add 'atom-text-editor', 'voice:delete-tag', ->
 #      <p> To test delete-tag, run it on this line</p>
 
 
+atom.commands.add 'atom-text-editor', 'd3s:preformat-code', ->
+# preformat-code: Convert the D3 code stored in the clipboard into preformatted HTML and insert it
+  return unless editor = atom.workspace.getActiveTextEditor()
+  text = atom.clipboard.read()
+  text = text.replace(/>/, '&lt')
+  tellUser "The preformatted code is: (#{text})"
+  # selection.insertText("[#{selection.getText()}](#{clipboardText})")
+
+
 
 # ---------------------------------------------------------------------------------------
 # commands and other stuff I might want to try out
