@@ -29,16 +29,15 @@ atom.commands.add 'atom-text-editor', 'voice:delete-tag', ->
     line.replace(/<([^>]+)>(.*)<\/\1>\s*\n$/, "$2\n" )
   )
 
-#      <p> To test delete-tag, run it on this line</p>
 
-
-atom.commands.add 'atom-text-editor', 'd3s:preformat-code', ->
-# preformat-code: Convert the D3 code stored in the clipboard into preformatted HTML and insert it
+atom.commands.add 'atom-text-editor', 'd3s:html-format-code', ->
+# html-format-code: Convert the D3 code stored in the clipboard into preformatted HTML and insert it
   return unless editor = atom.workspace.getActiveTextEditor()
   text = atom.clipboard.read()
-  text = text.replace(/>/, '&lt')
-  tellUser "The preformatted code is: (#{text})"
-  # selection.insertText("[#{selection.getText()}](#{clipboardText})")
+  text = text.replace(/&/gm, "&amp")
+  text = text.replace(/</gm, "&lt")
+  text = text.replace(/>/gm, "&gt")
+  editor.insertText("\n<pre>#{text}\n </pre>")
 
 
 
