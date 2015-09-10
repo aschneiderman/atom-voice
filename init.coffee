@@ -43,9 +43,9 @@ atom.commands.add 'atom-text-editor', 'd3s:html-format-code', ->
 atom.commands.add 'atom-text-editor', 'd3s:add-italics-and-id', ->
 # add-italics-and-id: Replace the selection with the <i id=, using the clipboard and the selected item
   return unless editor = atom.workspace.getActiveTextEditor()
-  selectionText = editor.getLastSelection()
-  clipboardText = atom.clipboard.read()
-  editor.insertText("\<i id=\"#{clipboardText}\"\>#{selectionText.getText()}\<\/i\>")
+  selection = editor.getLastSelection()
+  clipboard = atom.clipboard.read()
+  editor.insertText("\<i id=\"#{clipboard}\"\>#{selection.getText()}\<\/i\>")
 
 
 atom.commands.add 'atom-text-editor', 'd3s:create-input-form', ->
@@ -53,10 +53,13 @@ atom.commands.add 'atom-text-editor', 'd3s:create-input-form', ->
 #   create the input form, with one line per highlighted variable
   return unless editor = atom.workspace.getActiveTextEditor()
   code = atom.clipboard.read()
-  italicIDs = code.match(/id/gm)
-  italicIDs = "Watch out for the rock!".match(/r?or?/g)
-  # italicIDs = '  width = <i id="width">40</i>, height = <i id="height">40</i>, cellsize = <i id="cellsize">39</i>;'.match(/ id/g)
-  editor.insertText("#{italicIDs}")
+  italicIDs = code.match(/<i.*?\/i>/gim)
+  # Now we want to do is iterate through and create a new line of code for each one
+  #  '  width = <i id="width">40<\/i>, height = <i id="height">40<\/i>, cellsize = <i id="cellsize">39<\/i>;'
+
+  tellUser("#{italicIDs}")
+
+  # editor.insertText("#{italicIDs}")
 
 
 
@@ -73,8 +76,8 @@ atom.commands.add 'atom-text-editor', 'd3s:create-input-form', ->
 atom.commands.add 'atom-text-editor', 'markdown:paste-as-link-anders', ->
   return unless editor = atom.workspace.getActiveTextEditor()
   selection = editor.getLastSelection()
-  clipboardText = atom.clipboard.read()
-  selection.insertText("[#{selection.getText()}](#{clipboardText})")
+  clipboard = atom.clipboard.read()
+  selection.insertText("[#{selection.getText()}](#{clipboard})")
 
 # Example: log to the console when each text editor is saved.
 # atom.workspace.observeTextEditors (editor) ->
