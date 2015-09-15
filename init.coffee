@@ -10,13 +10,13 @@ tellUser = (user_message) ->
     buttons:
       OK:  =>
 
-fixCurrentLine = (fixingFunction)  ->
-  # fixCurrentLine: runs fixingFunction on the current line and replaces the current line with the result
+updateCurrentLine = (updateFunction)  ->
+  # updateCurrentLine: runs updateFunction on the current line and replaces the current line with the result
   return unless editor = atom.workspace.getActiveTextEditor()
   myCursor = editor.getCursorBufferPosition()
   editor.selectLinesContainingCursors()    # NOTE: Will do weird things if you have multiple cursors active
   line =  editor.getLastSelection().getText()
-  editor.insertText("#{fixingFunction(line)}")
+  editor.insertText("#{updateFunction(line)}")
   editor.setCursorBufferPosition(myCursor)
 
 
@@ -24,8 +24,8 @@ fixCurrentLine = (fixingFunction)  ->
 # My commands
 
 atom.commands.add 'atom-text-editor', 'voice:delete-tag', ->
-# delete-tag: Deletes the outer tags -- e.g., <p>...</p> -- the current line
-  fixCurrentLine ( (line) ->
+# delete-tag: Deletes the current line's outer tags  (e.g., to get rid of paragraph tags)
+  updateCurrentLine ( (line) ->
     line.replace(/<([^>]+)>(.*)<\/\1>\s*\n$/, "$2\n" )
   )
 

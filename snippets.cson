@@ -28,7 +28,10 @@
       'body': "$0"
 
     """
-    
+  'Insert Text':
+    'prefix': 'insert-text'
+    'body': 'editor.insertText("$1")'
+
 
 '.text.html':
       'test':
