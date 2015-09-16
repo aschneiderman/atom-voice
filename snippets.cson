@@ -37,6 +37,13 @@
       'test':
         'prefix': 'test'
         'body':  'Hi there, this is a test'
+      'HTML Comment':
+        'prefix': 'comment-html'
+        'body': '<!-- $1 -->'
+      'HTML End Comment':
+        'prefix': 'comment-html-end'
+        'body': '   <!-- end $1 -->'
+
       'D3 Sandwich Text Input':
         'prefix': 'ds-input-text'
         'body': """<input type="text" value="$1"  onChange="$2(''$3', this)">$0
