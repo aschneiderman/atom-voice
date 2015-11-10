@@ -9,8 +9,15 @@
     'prefix': 'hello'
     'body': 'I work everywhere!'
 
-
 '.source.coffee':
+  'My Snippet':
+    'prefix': 'my-snippet'
+    'body':  """
+    '$1':
+      'prefix': '$2'
+      'body': "$0"
+
+    """
   'Fix Current Line':
       'prefix': 'fix-current-line'
       'body': """
@@ -20,14 +27,6 @@
           line.$0
         )
       """
-  'My Snippet':
-    'prefix': 'my-snippet'
-    'body':  """
-    '$1':
-      'prefix': '$2'
-      'body': "$0"
-
-    """
   'Insert Text':
     'prefix': 'insert-text'
     'body': 'editor.insertText("$1")'
@@ -37,55 +36,6 @@
       'test':
         'prefix': 'test'
         'body':  'Hi there, this is a test'
-      'HTML Comment':
-        'prefix': 'comment-html'
-        'body': '<!-- $1 -->'
-      'HTML End Comment':
-        'prefix': 'comment-html-end'
-        'body': '   <!-- end $1 -->'
-
-      'D3 Sandwich Text Input':
-        'prefix': 'ds-input-text'
-        'body': """<input type="text" value="$1"  onChange="$2(''$3', this)">$0
-        """
-      'Recipe Row':
-        'prefix': 'recipe-row'
-        'body': """
-        <div class="recipe_row">
-        <div class="recipe_text">
-          $1
-        </div>
-        <div class="recipe_code">
-          <pre>
-          $2
-          </pre>
-        </div>
-        </div>  <!-- end recipe_row -->
-        $0
-        """
-      'Bold ID':
-        'prefix':'bold-id'
-        'body': '<b id="$1">'
-      'Recipe Play Area':
-        'prefix': 'recipe-play'
-        'body': """
-        <div class="recipe_row">
-        <div class="recipe_text">
-          <svg width="500" height="160" id="$1" class="SVG_playground"></svg>        <!-- SVG graphics will go here  -->
-        </div>
-        <div class="recipe_code">
-          <form>
-            <table class="input_table">
-              <tr><td>$2
-            </table>
-          </form>
-        </div>
-        </div>  <!-- end recipe_row -->
-        <script type="text/javascript">
-
-        </script>
-        $0
-        """
 
 
 # NOTE: If I want to create python snippets, use .source.python
