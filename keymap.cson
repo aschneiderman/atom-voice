@@ -6,22 +6,10 @@
 'atom-text-editor':
 	'alt-ctrl-f3': 'markdown:paste-as-link-anders'	# A little test – can get rid of it later
 	'alt-ctrl-f4': 'voice:delete-tag'
-	'alt-ctrl-f5': 'd3s:html-format-code'
-	'alt-ctrl-f6': 'd3s:add-italics-and-id'
-	'alt-ctrl-f8': 'd3s:create-input-form'
-
-
-
-
 
 
 # NOTE: looks like the shift-control keystrokes are not tied to anything right Now
 # NOTE: looks like shift alt control Is open for business
-
-
-
-
-
 
 
 # ---------------------------------------------------------------------------------------

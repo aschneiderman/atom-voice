@@ -30,38 +30,6 @@ atom.commands.add 'atom-text-editor', 'voice:delete-tag', ->
   )
 
 
-atom.commands.add 'atom-text-editor', 'd3s:html-format-code', ->
-# html-format-code: Convert the D3 code stored in the clipboard into preformatted HTML and insert it
-  return unless editor = atom.workspace.getActiveTextEditor()
-  text = atom.clipboard.read()
-  text = text.replace(/&/gm, "&amp")
-  text = text.replace(/</gm, "&lt")
-  text = text.replace(/>/gm, "&gt")
-  editor.insertText("\n<pre>#{text}\n </pre>")
-
-
-atom.commands.add 'atom-text-editor', 'd3s:add-italics-and-id', ->
-# add-italics-and-id: Replace the selection with the <i id=, using the clipboard and the selected item
-  return unless editor = atom.workspace.getActiveTextEditor()
-  selection = editor.getLastSelection()
-  clipboard = atom.clipboard.read()
-  editor.insertText("\<i id=\"#{clipboard}\"\>#{selection.getText()}\<\/i\>")
-
-
-atom.commands.add 'atom-text-editor', 'd3s:create-input-form', ->
-# create-input-form: Using the preformatted section, which needs to have been copied into the clipboard,
-#   create the input form, with one line per highlighted variable
-  return unless editor = atom.workspace.getActiveTextEditor()
-  code = atom.clipboard.read()
-  italicIDs = code.match(/<i.*?\/i>/gim)
-  # Now we want to do is iterate through and create a new line of code for each one
-  #  '  width = <i id="width">40<\/i>, height = <i id="height">40<\/i>, cellsize = <i id="cellsize">39<\/i>;'
-
-  tellUser("#{italicIDs}")
-
-  # editor.insertText("#{italicIDs}")
-
-
 
 
 
