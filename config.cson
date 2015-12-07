@@ -10,7 +10,6 @@
   editor:
     invisibles: {}
     tabLength: 2
-    fontSize: 13
     softWrap: true
     softTabs: false
   "exception-reporting":
