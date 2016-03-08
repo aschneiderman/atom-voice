@@ -7,7 +7,7 @@
 '*':
   'Snippet Name':
     'prefix': 'hello'
-    'body': 'I work everywhere!'
+    'body': 'I work everywhere! and twice on Sundays!'
 
 '.source.coffee':
   'My Snippet':
