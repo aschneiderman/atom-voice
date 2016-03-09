@@ -36,6 +36,18 @@
       'test':
         'prefix': 'test'
         'body':  'Hi there, this is a test'
+      'Class Example':
+        'prefix':  'class-example'
+        'body': """
+        <div class="example">$1) <a href="$2.html">$3</a></div>
+         Key Concepts:
+         <ul><li>$0
+         <div class="yourTurn">Your Turn:
+         </div>
+         """
+      'Stop Div':
+        'prefix':  'div-end'
+        'body':  '</div>'
 
 
 # NOTE: If I want to create python snippets, use .source.python
