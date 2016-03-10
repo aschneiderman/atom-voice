@@ -4,6 +4,7 @@
 # Helper functions
 # here's a test comment to see if it's properly synchronizing with GitHub
 # Here's another test, and, from my laptop
+# and now from my work desktop
 
 # tellUser: my equivalent of a simple dialog box
 tellUser = (user_message) ->
